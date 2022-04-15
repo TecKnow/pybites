@@ -39,11 +39,9 @@ def get_bodybuilder_friendly_foods(df=df, excl_drinks=False):
        Return a list of the top 5 foot Item stings."""
     eligible_foods = df[df["Calories"] > 0]
     if excl_drinks:
-        eligible_foods = eligible_foods[~eligible_foods["Category"].isin(['Coffee & Tea', 'Beverages'])]
-    eligible_foods['Fiber Ratio'] = eligible_foods['Protein'] / eligible_foods["Calories"].astype(float)
+        eligible_foods = eligible_foods[~eligible_foods["Category"].isin(
+            ['Coffee & Tea', 'Beverages'])]
+    eligible_foods['Fiber Ratio'] = eligible_foods['Protein'] / \
+        eligible_foods["Calories"].astype(float)
     top_foods = eligible_foods.sort_values("Fiber Ratio", ascending=False)[0:5]
     return top_foods["Item"].tolist()
-
-
-if __name__ == "__main__":
-    print(get_bodybuilder_friendly_foods(excl_drinks=False))
