@@ -1,6 +1,6 @@
 import requests
 
-IPINFO_URL = 'https://ipinfo.io/{ip}/json'
+IPINFO_URL = 'http://ipinfo.io/{ip}/json'
 
 
 def get_ip_country(ip_address):
