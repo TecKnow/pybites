@@ -9,7 +9,3 @@ def get_ip_country(ip_address):
     request_url = IPINFO_URL.replace("{ip}", ip_address)
     data = requests.get(request_url).json()
     return data["country"]
-
-if __name__ == "__main__":
-    print(get_ip_country("8.8.8.8"))
-    
