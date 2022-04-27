@@ -1,4 +1,5 @@
 from weakref import WeakSet
+from typing import Set
 
 
 class Animal:
@@ -17,4 +18,4 @@ class Animal:
         return '\n'.join(tuple(str(r) for r in sorted(cls.instance_references, key=lambda x: x.serial_number)))
 
     serial_counter: int = 10000
-    instance_references: set['Animal'] = set()
+    instance_references: Set['Animal'] = set()
