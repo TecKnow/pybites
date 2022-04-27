@@ -53,9 +53,3 @@ class Color:
     def __str__(self):
         """Returns the string value of the color object"""
         return f"{self.rgb if self.rgb is not None else 'Unknown'}"
-
-
-if __name__ == "__main__":
-    c = Color('white')
-    print("TESTING")
-    print(c.rgb)
