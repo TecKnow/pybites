@@ -1,9 +1,8 @@
-from http.client import INSUFFICIENT_STORAGE
+
 import os
 import sys
-from turtle import color
-from typing import Tuple
 import urllib.request
+from typing import Tuple
 
 # PREWORK (don't modify): import colors, save to temp file and import
 tmp = os.getenv("TMP", "/tmp")
@@ -29,7 +28,7 @@ class Color:
         self.rgb = COLOR_NAMES.get(self.color_name.upper(), None)
 
     @staticmethod
-    def hex2rgb(hex_color_str: str) -> tuple[int, int, int]:
+    def hex2rgb(hex_color_str: str) -> Tuple[int, int, int]:
         """Class method that converts a hex value into an rgb one"""
         if not isinstance(hex_color_str, str) or not len(hex_color_str) == 7 or not hex_color_str.startswith("#"):
             raise ValueError()
