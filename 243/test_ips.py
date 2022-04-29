@@ -1,3 +1,4 @@
+from ast import parse
 import os
 from pathlib import Path
 from ipaddress import IPv4Network
@@ -22,3 +23,13 @@ def json_file():
 
 
 # write your pytest code ...
+
+@pytest.fixture(scope='module')
+def range_list(json_file):
+    print("foo")
+    return parse_ipv4_service_ranges(json_file)
+
+def test_base(range_list):
+    print(range_list)
+    assert 0
+    
