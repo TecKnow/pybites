@@ -1,0 +1,8 @@
+<p>Write a decorator called <code>strip_range</code> that replaces characters with dots. It takes a start and an end <code>int</code> argument that defines the range of characters to be replaced. These work like <code>range</code>, so start is inclusive and end is exclusive.</p>
+<p>Best to illustrate with an example: decorating the <code>gen_output</code> function below, assuming <code>text</code> holds 'Hello world', it should convert it to 'Hel.. world' (= replace 0-indexed positions 3 and 4)</p>
+<pre>@strip_range(3, 5)
+def gen_output(text):
+    return text
+</pre>
+<p>See <code>test_strip_range</code> for more examples that have to pass in order to get credit. Good luck!</p>
+<p>New to decorators? Check out our <a href="https://pybit.es/decorators-by-example.html" target="_blank" rel="noopener">Learning Python Decorators by Example</a> article and/or start with two decorator Bites that are probably a bit easier: <a href="../../../../../bites/41/">#41. Write a login_required decorator</a> and <a href="../../../../../bites/120/">#120. Write a numbers validation decorator</a>. A similar <em>decorator-with-argument</em> Bite is: <a href="../../../../../bites/22/">#22. Write a decorator with argument</a>.</p>
