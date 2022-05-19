@@ -1,4 +1,4 @@
-from ast import Bytes
+
 import json
 import os
 from pathlib import Path
@@ -50,7 +50,10 @@ def process_data(url: str) -> pd.DataFrame:
     content_base64 = data["content"]
     content_bytes = base64.urlsafe_b64decode(content_base64)
     content_bytes_io = BytesIO(content_bytes)
-    df = pd.read_csv(content_bytes_io)
+    df = pd.read_csv(content_bytes_io, parse_dates=["month"])
+    df["month_no"] = df["month"].dt.month
+    df["year_no"] = df["month"].dt.year
+
     return df
 
 
@@ -113,13 +116,21 @@ def yearly_report(df: pd.DataFrame, year: int) -> None:
         11     78628.72
         12     69545.62
     """
-    df.groupby(year)
+    res = df.groupby(["year_no", "month_no"])["sales"]
+    # if res.empty:
+    #     raise ValueError(f"The year {year} is not included in the report!")
+    print(res)
 
 
 # uncomment the following for viewing/testing the reports/code
 if __name__ == "__main__":
     data = process_data(URL)
-    summary_report(data)
+    # print(data)
+    # print("*" * 80)
+    # print(data.dtypes)
+    # print("-"*80)
+    yearly_report(data, 2016)
+#    summary_report(data)
 #     for year in (data["month"].dt.year).unique():
 #         yearly_report(data, year)
 
