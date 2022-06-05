@@ -1,7 +1,5 @@
 from datetime import datetime, timedelta
 
-from sqlalchemy import true
-
 PYBITES_BORN = datetime(year=2016, month=12, day=19)
 
 
