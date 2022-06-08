@@ -3,14 +3,12 @@ import json
 import os
 from pathlib import Path
 from typing import Dict, List, Union
-from io import BytesIO, StringIO
+from io import BytesIO
 
 import pandas as pd  # type: ignore
 import requests
 
 import base64
-
-from pprint import pprint
 
 URL: str = "https://bites-data.s3.us-east-2.amazonaws.com/MonthlySales.csv"
 STATS: List[str] = ["sum", "mean", "max"]
