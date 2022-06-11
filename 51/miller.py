@@ -9,11 +9,7 @@ def py2_earth_hours_left(start_date=BITE_CREATED_DT):
     """Return how many hours, rounded to 2 decimals, Python 2 has
         left on Planet Earth (calculated from start_date)"""
     time_remaining_delta = PY2_DEATH_DT - start_date
-    hours_per_day = 24
-    seconds_per_hour = 60*60
-    time_remaining_hours = time_remaining_delta.days * \
-        24 + time_remaining_delta.seconds / seconds_per_hour
-    return round(time_remaining_hours, 2)
+    return round(time_remaining_delta.total_seconds() / (60*60), 2)
 
 
 def py2_miller_min_left(start_date=BITE_CREATED_DT):
