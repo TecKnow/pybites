@@ -14,12 +14,14 @@ def get_others(map_, r, c):
     # your code here
     directions = ((0, 1), (0, -1), (1, 0), (-1, 0))
     for a, b in directions:
-        y = r+a
-        x = c+b
-        if 0 <= y < len(map_) and 0 <= x < len(map_[y]):
-            nums += 1 if map_[y][x] == 0 else 0
-        else:
-            nums += 1
+        y, x = r+a, c+b
+
+        def _out_of_bounds():
+            """Tiles off the edge of the map count as ocean 
+               for the purposes of calculating island perimiter
+            """
+            return y < 0 or y >= len(map_) or x < 0 or x >= len(map_[y])
+        nums += 1 if _out_of_bounds() or map_[y][x] == 0 else 0
     return nums
 
 
@@ -29,10 +31,9 @@ def island_size(map_):
     Input: the map
     Output: the perimeter of the island
     """
-    perimiter = 0
-    for row_num in range(len(map_)):
-        for col_num in range(len(map_[row_num])):
-            if map_[row_num][col_num] == 1:
-                perimiter += get_others(map_, row_num, col_num)
+    perimiter = sum((get_others(map_, row_num, col_num)
+                     for row_num in range(len(map_))
+                     for col_num in range(len(map_[row_num]))
+                     if map_[row_num][col_num] == 1))
 
     return perimiter
