@@ -1,8 +1,6 @@
 import pytz
 from datetime import datetime
 
-from sqlalchemy import false
-
 MEETING_HOURS = range(6, 23)  # meet from 6 - 22 max
 TIMEZONES = set(pytz.all_timezones)
 
