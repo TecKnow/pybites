@@ -1,3 +1,6 @@
+from collections import deque
+
+
 def num_ops(n):
     """
     Input: an integer number, the target number
@@ -13,21 +16,20 @@ def num_ops(n):
     [Hint] the data structure is the key to solve it efficiently.
     """
     # you code
-    if not hasattr(num_ops, "cache"):
-        setattr(num_ops, "cache", {0: 1, 1: 0})
-    current_candidates = list(num_ops.cache.keys())
-    new_candidates = list()
-    while n not in num_ops.cache.keys():
-        for candidate in current_candidates:
-            current_steps = num_ops.cache[candidate]
-            double = candidate * 2
-            third = candidate // 3
-            if double not in num_ops.cache.keys():
+    if n not in num_ops.cache.keys():
+        work_deque = deque(num_ops.cache.items())
+        while work_deque:
+            current_value, current_steps = work_deque.popleft()
+            if current_value == n:
+                break
+            if (double := current_value * 2) not in num_ops.cache.keys():
                 num_ops.cache[double] = current_steps + 1
-                new_candidates.append(double)
-            if third not in num_ops.cache.keys():
+                work_deque.append((double, current_steps+1))
+            if (third := current_value // 3) not in num_ops.cache.keys():
                 num_ops.cache[third] = current_steps + 1
-                new_candidates.append(third)
-        current_candidates = new_candidates
-        new_candidates = list()
+                work_deque.append((third, current_steps + 1))
+
     return num_ops.cache[n]
+
+
+num_ops.cache = {0: 1, 1: 0}
