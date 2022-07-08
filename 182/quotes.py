@@ -1,7 +1,5 @@
 import re
 
-from numpy import extract
-
 # source: https://www.virgin.com/richard-branson/my-top-10-quotes-living-life-better
 HTML = """<!DOCTYPE html>
 <head>
