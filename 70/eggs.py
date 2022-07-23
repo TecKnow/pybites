@@ -15,6 +15,6 @@ class EggCreator:
     def __next__(self) -> str:
         if self.current < self.limit:
             self.current += 1
-            return choice(COLORS)
+            return f"{choice(COLORS)} egg"
         else:
             raise StopIteration()
