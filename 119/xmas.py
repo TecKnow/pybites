@@ -6,9 +6,6 @@ def generate_xmas_tree(rows: int = 10) -> str:
         ***
        *****"""
     max_width = 2*rows - 1
-    res = list()
-    for row_number in range(1, rows+1):
-        row_stars = "*" * (2*row_number - 1)
-        row_text = row_stars.center(max_width)
-        res.append(row_text)
-    return '\n'.join(res)
+    return '\n'.join([
+        ("*" * (2*row_number - 1)).center(max_width)
+        for row_number in range(1, rows+1)])
