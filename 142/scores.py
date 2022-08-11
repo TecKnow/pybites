@@ -1,5 +1,5 @@
 from itertools import chain
-from typing import Collection, Container, Iterable
+from typing import Collection, Container, Iterable, Generator, Iterator
 from collections import namedtuple
 
 MIN_SCORE = 4
@@ -8,7 +8,7 @@ DICE_VALUES = range(1, 7)
 Player = namedtuple('Player', 'name scores')
 
 
-def _die_roll_filter(rolls: Iterable[int], roll_range: Container = DICE_VALUES) -> int:
+def _die_roll_filter(rolls: Iterable[int], roll_range: Container = DICE_VALUES) -> Iterator[int]:
     for roll in rolls:
         if roll not in roll_range:
             raise ValueError(
@@ -16,13 +16,13 @@ def _die_roll_filter(rolls: Iterable[int], roll_range: Container = DICE_VALUES) 
         yield roll
 
 
-def _high_roll_filter(rolls: Iterable[int], min_value: int = MIN_SCORE) -> int:
+def _high_roll_filter(rolls: Iterable[int], min_value: int = MIN_SCORE) -> Iterator[int]:
     for roll in rolls:
         if roll >= MIN_SCORE:
             yield roll
 
 
-def _player_score_len_filter(players: Iterable[Player], scores_len: int) -> Player:
+def _player_score_len_filter(players: Iterable[Player], scores_len: int) -> Iterator[Player]:
     for player in players:
         if len(player.scores) != scores_len:
             raise ValueError(
