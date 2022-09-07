@@ -1,4 +1,3 @@
-from collections import namedtuple
 import csv
 from typing import Iterable, List, NamedTuple, Tuple
 
