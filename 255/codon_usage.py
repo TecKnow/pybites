@@ -1,7 +1,7 @@
 import os
 from typing import Dict, List, Optional, NamedTuple, Sequence
 from urllib.request import urlretrieve
-from collections import Counter
+from typing import Counter
 import logging
 
 logging.basicConfig()
@@ -67,15 +67,15 @@ def _parse_trans_table(trans_table: str = TRANSL_TABLE_11) -> Dict[str, str]:
         "=")[1].strip() for line in trans_table_lines]
     trans_table_lines_data[-3:] = [line.replace("T", "U")
                                    for line in trans_table_lines_data[-3:]]
-    pivot_table = list(zip(*trans_table_lines_data))
+    zip_list = list(zip(*trans_table_lines_data))
     pivot_table = [(''.join((B1, B2, B3)), AA)
-                   for AA, *_, B1, B2, B3 in pivot_table]
+                   for AA, *_, B1, B2, B3 in zip_list]
     return dict(pivot_table)
 
 
-def _calculate_stats(sequences: List[str], translation_table_str: str) -> None:
+def _calculate_stats(sequences: Sequence[str], translation_table_str: str) -> List[TableEntry]:
     trans_dict = _parse_trans_table(translation_table_str)
-    res_counter = Counter()
+    res_counter: Counter[str] = Counter()
     for seq in sequences:
         res_counter.update(_parse_coding_sequence(trans_dict, seq))
     total_codons = sum(res_counter.values())
