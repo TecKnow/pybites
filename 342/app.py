@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import Any, Dict, List
 
 from fastapi import FastAPI, HTTPException
-from passlib.context import CryptContext #type: ignore
+from passlib.context import CryptContext  # type: ignore
 from pydantic import BaseModel
 
 # https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/
@@ -13,7 +13,7 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 def get_password_hash(password):
     return pwd_context.hash(password)
 
-5
+
 class Food(BaseModel):
     id: int
     name: str
@@ -53,14 +53,17 @@ food_log: Dict[int, FoodEntry] = {}
 
 # Create CRUD endpoints for FoodEntry below as per instructions in the Bite ...
 
+
 @app.post("/", response_model=FoodEntry, status_code=201)
 def create_food_entry(food_entry: FoodEntry) -> FoodEntry:
     food_log[food_entry.id] = food_entry
     return food_entry
 
+
 @app.get("/{user_id}", response_model=List[FoodEntry])
 def get_foods_for_user(user_id: int) -> List[FoodEntry]:
     return [food_entry for food_entry in food_log.values() if food_entry.user.id == user_id]
+
 
 @app.put("/{entry_id}", response_model=FoodEntry)
 def update_food_entry(entry_id: int, new_food_entry: FoodEntry) -> FoodEntry:
@@ -68,6 +71,7 @@ def update_food_entry(entry_id: int, new_food_entry: FoodEntry) -> FoodEntry:
         raise HTTPException(status_code=404, detail="Food entry not found")
     food_log[entry_id] = new_food_entry
     return new_food_entry
+
 
 @app.delete("/{entry_id}")
 def delete_entry(entry_id: int) -> Dict[str, bool]:
