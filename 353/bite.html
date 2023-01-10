@@ -1,0 +1,10 @@
+<p>There are several Python frameworks to create CLIs, check out this <a href="https://typer.tiangolo.com/alternatives/" target="_blank" rel="noopener">overview of CLI framework options</a>.&nbsp;</p>
+<p>In this Bite we will leverage <a href="https://typer.tiangolo.com/tutorial/first-steps/" target="_blank" rel="noopener">Typer</a> to create a CLI based on a simple Python script.</p>
+<p>Therefore, a script with a simple function will be provided so that you will only need to extend the provided script with Typer annotations to allow it to be called with <code>typer.run(main)</code>.</p>
+<p>Typing <code>python script.py --help</code>&nbsp;should return the following:</p>
+<pre>Usage: script.py [OPTIONS] a b<br /><br />&nbsp; CLI that allows you to add two numbers<br /><br />Arguments:<br />  a&nbsp; The value of the first summand&nbsp; [required]<br />  b&nbsp; The value of the second summand&nbsp; [required]<br /><br />Options:<br />  --install-completion&nbsp; Install completion for the current shell.<br />  --show-completion&nbsp; &nbsp; &nbsp;Show completion for the current shell, to copy it or<br />  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; customize the installation.<br />&nbsp; --help&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Show this message and exit.</pre>
+<p><br />The <code>Options</code> are standard Typer switches which are available out-of-the-box, so you don't need to worry about them.</p>
+<p>If this description is unclear, check out the tests to better understand what is required.</p>
+<p>One last hint: Make sure to always use lowercase arguments, since there is a <a href="https://github.com/tiangolo/typer/issues/167" target="_blank" rel="noopener">bug in click concerning mixed and upper case arguments</a>.</p>
+<p>Enjoy!</p>
+<p>PS: Just use <code>typer.Argument</code> for now. If you stumble over <code>typer.Option</code> and wonder what the difference is, wait for the next Bite. :)</p>
