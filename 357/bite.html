@@ -1,0 +1,9 @@
+<p>In the previous Bite, you learned how to create an application and added several commands for that app.</p>
+<p>Now, let's create some subcommands to further organize your application, see the <a href="https://typer.tiangolo.com/tutorial/subcommands/" target="_blank" rel="noopener">subcommands documentation</a>.</p>
+<p>Create a subcommand "algorithm" from which further subcommands "sum", "subtract", ... can be run as following:</p>
+<pre>$ python script.py algo sum<br />$ python script.py algo substract</pre>
+<p>We already reorganized the code for you into <code>algorithms.py</code> and <code>comparison.py</code>, which both contain the function and command definitions from the previous exercise.</p>
+<p><em><strong>Note</strong>: Due to the how the platform works with AWS Lambda, mentioned modules will be downloaded and added to <code>/tmp</code> which is being appended to <code>sys.path</code> so they can be imported.</em></p>
+<p>All you need to do is to add the applications (Typer <code>app</code> instances) from <code>algorithms.py</code> and <code>comparison.py</code> into a single application using the <code>app.add_typer()</code> method.</p>
+<p>Enjoy!</p>
+<p>&nbsp;</p>
