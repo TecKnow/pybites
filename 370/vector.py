@@ -1,8 +1,7 @@
 import math
-from typing import (MutableSequence, Tuple,
-                    TypeAlias, Union)
+from typing import MutableSequence, Tuple, Union, overload
 
-VectorFloat: TypeAlias = Union["Vector", float]
+
 class Vector:
     """A class for representing 3D vectors represented by three coordinates."""
 
@@ -64,30 +63,33 @@ class Vector:
     def __call__(self) -> Tuple[float, float, float]:
         return self.x, self.y, self.z
 
-    def __len__(self)->int:
+    def __len__(self) -> int:
         return len(self())
 
-    def __add__(self, other: "Vector")->"Vector":
+    def __add__(self, other: "Vector") -> "Vector":
         return Vector(self.x + other.x, self.y + other.y, self.z + other.z)
 
     def __sub__(self, other: "Vector") -> "Vector":
         return Vector(self.x - other.x, self.y - other.y, self.z - other.z)
 
-    def __mul__(self, other: VectorFloat) -> VectorFloat:
+    @overload
+    def __mul__(self, other: "Vector") -> float:
+        pass
+
+    @overload
+    def __mul__(self, other: float) -> "Vector":
+        pass
+
+    def __mul__(self, other: Union["Vector", float]) -> Union["Vector", float]:
         if isinstance(other, Vector):
             return sum(v * w for v, w in zip(self(), other()))
 
-        try:
-            other = float(
-                other
-            )  # cannot easily check for int, float as isinstance(int, float) is False
+        elif isinstance(other, (int, float)):
             return Vector(self.x * other, self.y * other, self.z * other)
-        except ValueError:
-            print("Cannot deal with values other than Vectors and numbers.")
-            return self
+        print("Cannot deal with values other than Vectors and numbers.")
+        return self
 
-    def __rmul__(self, other: VectorFloat) -> VectorFloat:
-        return self.__mul__(other)
+    __rmul__ = __mul__
 
     def __str__(self) -> str:
         return f"[{self.x} {self.y} {self.z}]"
@@ -106,7 +108,8 @@ if __name__ == "__main__":
     print(v())
     print(v.norm(1), v.norm(2), v.norm(3))
 
-    w = Vector.from_list([1, 2, 3])
+    wp: list[float] = [1, 2, 3]
+    w = Vector.from_list(wp)
     print(w)
 
     print(v + w)
