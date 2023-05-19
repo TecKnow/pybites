@@ -1,5 +1,6 @@
-from typing import Iterable, Tuple, Union, Optional, MutableSequence, Sequence, TypeAlias
 import math
+from typing import (MutableSequence, Tuple,
+                    TypeAlias, Union)
 
 VectorFloat: TypeAlias = Union["Vector", float]
 class Vector:
