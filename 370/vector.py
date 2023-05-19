@@ -1,7 +1,7 @@
-from typing import Iterable, Tuple, Union, Optional
+from typing import Iterable, Tuple, Union, Optional, MutableSequence, Sequence, TypeAlias
 import math
 
-
+VectorFloat: TypeAlias = Union["Vector", float]
 class Vector:
     """A class for representing 3D vectors represented by three coordinates."""
 
@@ -11,7 +11,7 @@ class Vector:
         self.z = z
 
     @classmethod
-    def from_list(cls, coords: list[float]) -> "Vector":
+    def from_list(cls, coords: MutableSequence[float]) -> "Vector":
         """Create a new Vector from a list of numbers.
 
         Args:
@@ -72,7 +72,7 @@ class Vector:
     def __sub__(self, other: "Vector") -> "Vector":
         return Vector(self.x - other.x, self.y - other.y, self.z - other.z)
 
-    def __mul__(self, other: Union["Vector", float]) -> Union[None, "Vector", float]:
+    def __mul__(self, other: VectorFloat) -> VectorFloat:
         if isinstance(other, Vector):
             return sum(v * w for v, w in zip(self(), other()))
 
@@ -85,7 +85,7 @@ class Vector:
             print("Cannot deal with values other than Vectors and numbers.")
             return self
 
-    def __rmul__(self, other: Union["Vector", float]) -> Union[None, "Vector", float]:
+    def __rmul__(self, other: VectorFloat) -> VectorFloat:
         return self.__mul__(other)
 
     def __str__(self) -> str:
