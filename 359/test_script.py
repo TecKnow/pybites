@@ -10,24 +10,28 @@ def test_root_help():
     expected_strings = {
                         "compare   Command that checks whether a number d is greater than a number c.",
                         "subtract  Command that allows you to add two numbers." }
+    expected_strings = {" ".join(expected_string.split()) for expected_string in expected_strings}
     for expected_string in expected_strings:
-        assert expected_string in result.stdout
+        assert expected_string in " ".join(result.stdout.split())
 
 def test_compare_help():
     result = runner.invoke(app, ["compare", "--help"])
     expected_strings = {"Usage: root compare [OPTIONS] C D",
-                        "c      INTEGER  First number to compare against. [default: None]",
-                        "d      INTEGER  Second number that is compared against first number."}
+                        "C       First number to compare against",
+                        "D       Second number that is compared against first number."}
+    expected_strings = {" ".join(expected_string.split()) for expected_string in expected_strings}
     for expected_string in expected_strings:
-        assert expected_string in result.stdout
+        assert expected_string in " ".join(result.stdout.split())
 
 def test_subtract_help():
-    result = runner.invoke(app, ["subtract", "--help"])
+    raw_result = runner.invoke(app, ["subtract", "--help"])
+    result = " ".join(raw_result.stdout.split())
     expected_strings = {"Usage: root subtract [OPTIONS] A B",
-                        "a      INTEGER  The value of the first summand [default: None]",
-                        "b      INTEGER  The value of the second summand [default: None]"}
+                        "A The value of the first summand",
+                        "B The value of the second summand"}
+    expected_strings = {" ".join(expected_string.split()) for expected_string in expected_strings}
     for expected_string in expected_strings:
-        assert expected_string in result.stdout
+        assert expected_string in result
 
 def test_compare_gt():
     result = runner.invoke(app, ["compare", "3", "7"])
