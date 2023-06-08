@@ -1,0 +1,238 @@
+coverage:
+  all_nodes: 0
+  covered_nodes: 0
+mutation_score: 66.66666666666666
+mutations:
+- exception_traceback: "def test_single_transaction():\n        test_account = Account(\"\
+    Dan\")\n        test_account.add_transaction(30)\n        assert len(test_account)\
+    \ == 1\n>       assert test_account.balance == 30\nE       AssertionError\n\n\
+    test_account.py:34: AssertionError"
+  killer: test_account.py::test_single_transaction
+  module: &id001 !!python/module:account ''
+  mutations:
+  - lineno: 29
+    operator: AOR
+  number: 1
+  status: killed
+  tests_run: 4
+  time: 0.048780202865600586
+- exception_traceback: null
+  killer: null
+  module: *id001
+  mutations:
+  - lineno: 45
+    operator: AOR
+  number: 2
+  status: survived
+  tests_run: 8
+  time: 0.03845715522766113
+- exception_traceback: null
+  killer: null
+  module: *id001
+  mutations:
+  - lineno: 47
+    operator: AOR
+  number: 3
+  status: survived
+  tests_run: 8
+  time: 0.03731584548950195
+- exception_traceback: "def test_non_integer_transaction():\n        test_account\
+    \ = Account(\"Charlie\")\n        with pytest.raises(ValueError):\n>         \
+    \  test_account.add_transaction(0.25)\nE           Failed: DID NOT RAISE <class\
+    \ 'ValueError'>\n\ntest_account.py:26: Failed"
+  killer: test_account.py::test_non_integer_transaction
+  module: *id001
+  mutations:
+  - lineno: 23
+    operator: COD
+  number: 4
+  status: killed
+  tests_run: 3
+  time: 0.048575639724731445
+- exception_traceback: "def test_non_integer_transaction():\n        test_account\
+    \ = Account(\"Charlie\")\n        with pytest.raises(ValueError):\n>         \
+    \  test_account.add_transaction(0.25)\nE           Failed: DID NOT RAISE <class\
+    \ 'ValueError'>\n\ntest_account.py:26: Failed"
+  killer: test_account.py::test_non_integer_transaction
+  module: *id001
+  mutations:
+  - lineno: 23
+    operator: COI
+  number: 5
+  status: killed
+  tests_run: 3
+  time: 0.04774665832519531
+- exception_traceback: "def test_default():\n        test_account = Account(\"Bob\"\
+    )\n        assert test_account.owner == \"Bob\"\n>       assert test_account.amount\
+    \ == 0\nE       AssertionError\n\ntest_account.py:9: AssertionError"
+  killer: test_account.py::test_default
+  module: *id001
+  mutations:
+  - lineno: 9
+    operator: CRP
+  number: 6
+  status: killed
+  tests_run: 1
+  time: 0.05143451690673828
+- exception_traceback: "def test_default():\n        test_account = Account(\"Bob\"\
+    )\n        assert test_account.owner == \"Bob\"\n        assert test_account.amount\
+    \ == 0\n        assert str(test_account) == \"Account of Bob with starting amount:\
+    \ 0\"\n>       assert repr(test_account) == \"Account('Bob', 0)\"\nE       AssertionError\n\
+    \ntest_account.py:11: AssertionError"
+  killer: test_account.py::test_default
+  module: *id001
+  mutations:
+  - lineno: 16
+    operator: CRP
+  number: 7
+  status: killed
+  tests_run: 1
+  time: 0.0477900505065918
+- exception_traceback: "def test_default():\n        test_account = Account(\"Bob\"\
+    )\n        assert test_account.owner == \"Bob\"\n        assert test_account.amount\
+    \ == 0\n        assert str(test_account) == \"Account of Bob with starting amount:\
+    \ 0\"\n>       assert repr(test_account) == \"Account('Bob', 0)\"\nE       AssertionError\n\
+    \ntest_account.py:11: AssertionError"
+  killer: test_account.py::test_default
+  module: *id001
+  mutations:
+  - lineno: 16
+    operator: CRP
+  number: 8
+  status: killed
+  tests_run: 1
+  time: 0.04824566841125488
+- exception_traceback: "def test_default():\n        test_account = Account(\"Bob\"\
+    )\n        assert test_account.owner == \"Bob\"\n        assert test_account.amount\
+    \ == 0\n>       assert str(test_account) == \"Account of Bob with starting amount:\
+    \ 0\"\nE       AssertionError\n\ntest_account.py:10: AssertionError"
+  killer: test_account.py::test_default
+  module: *id001
+  mutations:
+  - lineno: 19
+    operator: CRP
+  number: 9
+  status: killed
+  tests_run: 1
+  time: 0.048069000244140625
+- exception_traceback: "def test_default():\n        test_account = Account(\"Bob\"\
+    )\n        assert test_account.owner == \"Bob\"\n        assert test_account.amount\
+    \ == 0\n>       assert str(test_account) == \"Account of Bob with starting amount:\
+    \ 0\"\nE       AssertionError\n\ntest_account.py:10: AssertionError"
+  killer: test_account.py::test_default
+  module: *id001
+  mutations:
+  - lineno: 19
+    operator: CRP
+  number: 10
+  status: killed
+  tests_run: 1
+  time: 0.047369956970214844
+- exception_traceback: null
+  killer: null
+  module: *id001
+  mutations:
+  - lineno: 24
+    operator: CRP
+  number: 11
+  status: survived
+  tests_run: 8
+  time: 0.03914332389831543
+- exception_traceback: null
+  killer: null
+  module: *id001
+  mutations:
+  - lineno: 24
+    operator: CRP
+  number: 12
+  status: survived
+  tests_run: 8
+  time: 0.03909134864807129
+- exception_traceback: null
+  killer: null
+  module: *id001
+  mutations:
+  - lineno: 44
+    operator: CRP
+  number: 13
+  status: survived
+  tests_run: 8
+  time: 0.03778433799743652
+- exception_traceback: null
+  killer: null
+  module: *id001
+  mutations:
+  - lineno: 44
+    operator: CRP
+  number: 14
+  status: survived
+  tests_run: 8
+  time: 0.039432525634765625
+- exception_traceback: "def test_default():\n        test_account = Account(\"Bob\"\
+    )\n        assert test_account.owner == \"Bob\"\n        assert test_account.amount\
+    \ == 0\n        assert str(test_account) == \"Account of Bob with starting amount:\
+    \ 0\"\n        assert repr(test_account) == \"Account('Bob', 0)\"\n        assert\
+    \ len(test_account) == 0\n>       assert test_account.balance == 0\nE       AssertionError\n\
+    \ntest_account.py:13: AssertionError"
+  killer: test_account.py::test_default
+  module: *id001
+  mutations:
+  - lineno: 27
+    operator: DDL
+  number: 15
+  status: killed
+  tests_run: 1
+  time: 0.05086779594421387
+- exception_traceback: "def test_ordering():\n        first_account = Account(\"George\"\
+    , 25)\n        second_account = Account(\"Harold\", 15)\n>       assert first_account\
+    \ > second_account\nE       AssertionError\n\ntest_account.py:54: AssertionError"
+  killer: test_account.py::test_ordering
+  module: *id001
+  mutations:
+  - lineno: 38
+    operator: ROR
+  number: 16
+  status: killed
+  tests_run: 7
+  time: 0.04919147491455078
+- exception_traceback: "def test_ordering():\n        first_account = Account(\"George\"\
+    , 25)\n        second_account = Account(\"Harold\", 15)\n>       assert first_account\
+    \ > second_account\nE       AssertionError\n\ntest_account.py:54: AssertionError"
+  killer: test_account.py::test_ordering
+  module: *id001
+  mutations:
+  - lineno: 41
+    operator: ROR
+  number: 17
+  status: killed
+  tests_run: 7
+  time: 0.04899477958679199
+- exception_traceback: "def test_ordering():\n        first_account = Account(\"George\"\
+    , 25)\n        second_account = Account(\"Harold\", 15)\n        assert first_account\
+    \ > second_account\n        assert second_account < first_account\n        first_account.add_transaction(5)\n\
+    \        second_account.add_transaction(5)\n        assert first_account > second_account\n\
+    \        assert second_account < first_account\n        second_account.add_transaction(10)\n\
+    \        assert second_account == first_account\n>       assert not second_account\
+    \ < first_account\nE       AssertionError\n\ntest_account.py:62: AssertionError"
+  killer: test_account.py::test_ordering
+  module: *id001
+  mutations:
+  - lineno: 41
+    operator: ROR
+  number: 18
+  status: killed
+  tests_run: 7
+  time: 0.050369977951049805
+number_of_tests: 8
+targets:
+- account.py
+tests:
+- name: test_account
+  target: null
+  time: 0.12280631065368652
+time_stats:
+  create_mutant_module: 0.0025374889373779297
+  create_target_ast: 0.0006303787231445312
+  mutate_module: 0.984243631362915
+  run_tests_with_mutant: 0.8208448886871338
+total_time: 1.1074724197387695
