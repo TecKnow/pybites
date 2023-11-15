@@ -1,0 +1,17 @@
+<p>In this Bite, you build a function that tells you how far ahead or behind an annual goal you are. This could be a New&nbsp;Year's Resolution (you are still on track, right?). You can use the code you build to check in often and track your&nbsp;progress.</p>
+<p>For this Bite a goal can be expressed as a number, like the number of steps you want to walk in a year, or the number of&nbsp;times you substitute a healthy snack for junk food in a year. The function arguments are:</p>
+<p>- a string (the description of the goal)</p>
+<p>- the target for the year as an integer or a calculation like <code>(30 * 365)</code></p>
+<p>- your current score</p>
+<p>- a <code>tuple</code> with (year, month, day) for the date you achieved the current score</p>
+<p>The function returns a message that varies depending on whether you are on track to achieve the goal at the end of the&nbsp;year given your pace so far.</p>
+<p>If the tuple representing the date is not a valid date, the function could raise a <code>ValueError</code> or a <code>TypeError</code>. Your solution does not need to check for these errors.</p>
+<p>I encourage you to use tuple unpacking to populate a date from the date tuple passed in.</p>
+<p>The <code>return</code> statement should be carefully formatted to exactly match the examples below.&nbsp;</p>
+<p><strong>Note</strong>: if you are exactly on track, the function returns a congratulations message, saying that you are 0 ahead!&nbsp;</p>
+<p><strong>HINT</strong>: In honour of this being Bite <strong>366</strong>, we want you to take leap days into account (for years with 366 days).</p>
+<p>If either of the final 2 tests fail (goals for "leaps" and "jumps"), consider whether you adjusted the target per day.</p>
+<p>Remember also to include the current day in the number of elapsed days in the year. So January 1 = 1 day, NOT 0 days!</p>
+<h3>Examples</h3>
+<pre>&gt;&gt;&gt; from goal_tracker import goal_tracker<br />&gt;&gt;&gt; goal_tracker("days of code", 365, 13, (2023, 1, 5))<br />'Congratulations! You are on track with your days of code goal. The target for 2023-01-05 is 5 days of code and you are 8 ahead.'<br />&gt;&gt;&gt; goal_tracker("pages read", 36500, 27298, (2023, 9, 30))<br />'You have some catching up to do! The target for 2023-09-30 is 27,300 pages read and you are 2 behind.'</pre>
+<p>Keep calm and code in Python!</p>
