@@ -1,0 +1,25 @@
+<p>You are a professional art thief with a penchant for post-war American painting, sun-soaked French islands, and money. You have been on vacation for the past 3 weeks.</p>
+<p>Due to ongoing wildfires pretty much everywhere, your flight home from St. Barths to Paris has been re-routed through New York City, gifting you a layover and time to kill.</p>
+<p>You remember an article from your "Horizons" in-flight magazine describing a current MoMa exhibit of Abstract Expressionist paintings. You decide to hit it.</p>
+<p>Your plan is to:</p>
+<p>- Focus on one gallery only</p>
+<p>- Maximize your haul (<em>haul</em> = "proceeds from a theft")</p>
+<p>- Avoid getting caught.</p>
+<p>Oh and one more thing:</p>
+<p>&nbsp; &nbsp; - <em>all</em> the paintings in the gallery are part of a networked security system</p>
+<p>&nbsp; &nbsp; - If you steal <em>two adjacent</em> paintings, you will trigger the alarm, which will alert the cops, who will arrest you.</p>
+<h3>TL;DR</h3>
+<p>- You are a thief trying to steal paintings, and you have <code>n</code> paintings in front of you.</p>
+<p>- You can steal paintings, but you cannot steal two consecutive paintings because that will trigger an alarm.</p>
+<p>- Each painting has a value represented by an integer.</p>
+<p>- You want to find the maximum value you can obtain by stealing paintings without ever taking two consecutive ones.</p>
+<h3>Examples:</h3>
+<p>1.</p>
+<pre>&gt;&gt;&gt; from art_thief import art_thief<br />&gt;&gt;&gt; paintings = [2, 7, 9, 3, 1]<br />&gt;&gt;&gt; art_thief(paintings)<br />12<br /># Explanation:<br /># Steal the first painting (value = 2)<br /># Steal the third painting (value = 9)<br /># Steal the fifth painting (value = 1)<br /># 2 + 9 + 1 = 12&nbsp;</pre>
+<p>2.</p>
+<pre>&gt;&gt;&gt; from art_thief import art_thief<br />&gt;&gt;&gt; paintings = [3, 1, 10, 50, 2, 9]<br />&gt;&gt;&gt; art_thief(paintings)<br />62<br /># Explanation:<br /># Steal the first painting (value = 3)<br /># Steal the fourth painting (value = 50)<br /># Steal the sixth painting (value = 9)<br /><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"># 3 + 50 + 9 = 62</span></pre>
+<p>3.</p>
+<pre>&gt;&gt;&gt; from art_thief import art_thief<br />&gt;&gt;&gt; paintings = [6, 1, 9, 7, 4, 8, 3, 5, 2, 10]<br />&gt;&gt;&gt; art_thief(paintings)<br />38<br /># Explanation:<br /># Steal the first painting (value = 6)<br /># Steal the third painting (value = 9)<br /># Steal the sixth painting (value = 8)<br /># Steal the eigth painting (value = 5)<br /># Steal the tenth painting (value = 10)</pre>
+<h3>Hint:</h3>
+<p>Your solution needs to consider the possibility of stealing non-consecutive paintings that aren't strictly in an even-odd pattern (see Examples 2 and 3).</p>
+<p>Keep calm and code in Python!</p>
