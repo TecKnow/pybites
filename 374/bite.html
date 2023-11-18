@@ -1,0 +1,20 @@
+<p>As defined by the OED, an anagram is <em>a word, phrase, or name formed by rearranging the letters of another</em>.</p>
+<p>Given a list of strings, return a list with any anagrams grouped together into sub-lists.</p>
+<p>Example:</p>
+<pre>&gt;&gt;&gt; from&nbsp; anagram import group_anagrams<br />&gt;&gt;&gt; anagrams = ["eat", "tea", "tan", "ate", "nat", "bat"]<br />&gt;&gt;&gt; group_anagrams(anagrams)<br />[["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]</pre>
+<p>Example 2:</p>
+<pre>&gt;&gt;&gt; from&nbsp; anagram import group_anagrams<br />&gt;&gt;&gt; anagrams = ["bat", "tab", "bad", "dab", "nat", "tan"]<br />&gt;&gt;&gt; group_anagrams(anagrams)<br />[["bad", "dab"], ["bat", "tab"], ["nat", "tan"]]</pre>
+<h3>Learner's Task</h3>
+<p>Your task is to write a function which:</p>
+<p>- Takes a list of strings as input.</p>
+<p>- Groups any anagrams among them further into sub-lists.</p>
+<p>- Returns the grouped anagrams as a <em>list</em> containing <em>lists</em> containing <em>strings</em>.</p>
+<p><strong>Assumptions:</strong></p>
+<p>- You do not need to perform validation to determine whether the list does, in fact, contain anagrams.</p>
+<p>- Any non-anagram should also go in its own sub-list (of one)</p>
+<p>- Within the returned list, the anagrams can be in any order, i.e., the following are equally valid:</p>
+<pre>&nbsp; &nbsp; [['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']]<br />&nbsp; &nbsp; [['bat'], ['eat', 'tea', 'ate'], ['tan', 'nat']]</pre>
+<p><strong>Hints:</strong></p>
+<p>- There are different ways to solve this problem</p>
+<p>- One way is to use Python's <code>collections</code> module, specifically <code>defaultdict</code>.</p>
+<p>Keep calm and code in Python!</p>
